@@ -73,4 +73,4 @@ app.post('/log-in', (req, res) => {
 
 app.get('/welcome', (req, res) => res.render('welcome'));
 
-app.listen(8080, () => console.log('Server running on port 8080'));
+app.listen(8080, () => console.log('Server running on port 8080'));// Added comment
