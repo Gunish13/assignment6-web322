@@ -1,0 +1,145 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif; /* Modern font */
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5; /* Light background for contrast */
+    color: #333; /* Dark gray text */
+    line-height: 1.6; /* Improved readability */
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #000; /* Solid black for a classic look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600; /* Slightly lighter weight for better readability */
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Added transform for hover effect */
+}
+
+nav ul li a:hover {
+    color: #f4a261; /* Warm hover effect */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: url('/images/hero1.jpg') no-repeat center center/cover;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.hero h1 {
+    font-size: 42px;
+    font-weight: 700; /* Bold for emphasis */
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 20px;
+    font-style: italic;
+}
+
+/* Features Section */
+.features {
+    text-align: center;
+    padding: 40px 20px;
+    background: url('/images/hero2.jpg') no-repeat center center/cover;
+    color: #fff; /* Ensure text is readable against background */
+}
+
+.features h2 {
+    font-size: 30px;
+    color: #444;
+    margin-bottom: 15px; /* Added margin for spacing */
+}
+
+.features p {
+    font-size: 18px;
+    color: #777;
+}
+
+/* Featured Products */
+.featured {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fafafa;
+}
+
+.featured h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.product-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.product {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Added box-shadow transition */
+}
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.product img {
+    width: 100%; /* Make images responsive */
+    height: auto;
+    border-radius: 5px;
+}
+
+.product h3 {
+    font-size: 22px;
+    color: #444;
+    margin: 10px 0; /* Added margin for spacing */
+}
+
+.product p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e76f51;
+}
+
+/* Footer */
+footer {
+    background-color: #000; /* Solid black for consistency */
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative; /* Ensure footer stays at the bottom */
+    bottom: 0;
+    width: 100%; /* Full width */
+}

@@ -1,0 +1,9 @@
+<div class="product" style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+    <img src="<%= product.imageUrl %>" alt="<%= product.title %>" style="max-width: 100%; height: auto;">
+    <h3><%= product.title %></h3>
+    <% if (product.salePrice) { %>
+      <p><s>$<%= product.price.toFixed(2) %></s> $<%= product.salePrice.toFixed(2) %></p>
+    <% } else { %>
+      <p>$<%= product.price.toFixed(2) %></p>
+    <% } %>
+  </div>

@@ -1,0 +1,11 @@
+<div style="padding: 20px; text-align: center;">
+    <h1>Inventory</h1>
+    <% categorizedProducts.forEach(category => { %>
+      <h2><%= category.category %></h2>
+      <div class="product-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+        <% category.products.forEach(product => { %>
+          <%- include('partials/product', { product }) %>
+        <% }); %>
+      </div>
+    <% }); %>
+  </div>

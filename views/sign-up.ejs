@@ -1,0 +1,21 @@
+<div style="max-width: 400px; margin: 20px auto; padding: 20px; border: 1px solid #ddd;">
+  <h1>Sign Up</h1>
+  <% if (errors) { %>
+    <ul style="color: red; list-style: none; padding: 10px; border: 1px solid red; margin-bottom: 10px;">
+      <% errors.forEach(error => { %>
+        <li><%= error %></li>
+      <% }); %>
+    </ul>
+  <% } %>
+  <form method="POST" action="/sign-up">
+    <label>First Name</label>
+    <input type="text" name="firstName" value="<%= firstName || '' %>" style="width: 100%; margin-bottom: 10px;">
+    <label>Last Name</label>
+    <input type="text" name="lastName" value="<%= lastName || '' %>" style="width: 100%; margin-bottom: 10px;">
+    <label>Email</label>
+    <input type="text" name="email" value="<%= email || '' %>" style="width: 100%; margin-bottom: 10px;">
+    <label>Password</label>
+    <input type="password" name="password" value="<%= password || '' %>" style="width: 100%; margin-bottom: 10px;">
+    <button type="submit" style="width: 100%; padding: 10px; background: #333; color: white; border: none;">Continue</button>
+  </form>
+</div>

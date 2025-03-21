@@ -1,0 +1,34 @@
+<header>
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: #333; color: white;">
+        <a href="/"><img src="/images/logo.jpg" alt="WoodWorks Logo" style="height: 40px;"></a>
+        <ul style="list-style: none; display: flex; margin: 0;">
+            <li><a href="/inventory">Inventory</a></li>
+                <li><a href="/sign-up">Sign Up</a></li>
+                <li><a href="/log-in">Log In</a></li>
+        </ul>
+    </nav>
+    <div class="tagline-container" style="text-align: center; padding: 10px; background: #444; color: white;">
+        <h2 class="tagline" style="margin: 0; font-size: 24px; animation: blink 1s infinite;">"SPRING SEASON SALE!"</h2> <!-- Brand Tagline -->
+    </div>
+</header>
+
+<style>
+    @keyframes blink {
+        0%, 100% {
+            opacity: 1; /* Fully visible */
+        }
+        50% {
+            opacity: 0; /* Invisible */
+        }
+    }
+
+    .tagline-container {
+        position: relative;
+        height: 40px; /* Adjust height as needed */
+    }
+
+    .tagline {
+        position: relative;
+        white-space: nowrap; /* Prevent line breaks */
+    }
+</style>

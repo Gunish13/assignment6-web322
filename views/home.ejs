@@ -1,0 +1,18 @@
+<section class="hero" style="background: url('/images/hero1.jpg') center/cover; height: 300px; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <h1>WOODWORKS</h1>
+    <p>Where Comfort Meets Style!</p>
+  </section>
+  
+  <section class="features" style="padding: 20px; text-align: center;">
+    <h2>Why Shop With Us?</h2>
+    <p>Best prices, high-quality furniture, and fast delivery.</p>
+  </section>
+  
+  <section class="featured" style="padding: 20px; text-align: center;">
+    <h2>Featured Products</h2>
+    <div class="product-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+      <% featuredProducts.forEach(product => { %>
+        <%- include('partials/product', { product }) %>
+      <% }); %>
+    </div>
+  </section>
