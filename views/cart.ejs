@@ -1,0 +1,91 @@
+<div style="padding: 20px; max-width: 1200px; margin: 0 auto;">
+    <h1>Shopping Cart</h1>
+    <p>Welcome, <%= user.firstName %> (Customer)</p>
+    
+    <% if (typeof order !== 'undefined' && order === 'success') { %>
+        <div style="background: #dff0d8; color: #3c763d; padding: 15px; margin-bottom: 20px; border-radius: 4px;">
+            Your order has been placed successfully! A confirmation email has been sent to your email address.
+        </div>
+    <% } %>
+    
+    <% if (!cart || cart.items.length === 0) { %>
+        <p>Your shopping cart is empty.</p>
+        <a href="/inventory" style="display: inline-block; background: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px;">
+            Continue Shopping
+        </a>
+    <% } else { %>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <thead>
+                <tr style="background: #f5f5f5;">
+                    <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Product</th>
+                    <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Price</th>
+                    <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Quantity</th>
+                    <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Total</th>
+                    <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let subtotal = 0; %>
+                <% cart.items.forEach(item => { 
+                    const product = item.productId;
+                    const price = product.salePrice || product.price;
+                    const lineTotal = price * item.quantity;
+                    subtotal += lineTotal;
+                %>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px; display: flex; align-items: center;">
+                            <img src="<%= product.imageUrl %>" alt="<%= product.title %>" style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px;">
+                            <div>
+                                <h3 style="margin: 0;"><%= product.title %></h3>
+                                <p style="margin: 0; font-size: 14px; color: #666;"><%= product.description.substring(0, 50) %>...</p>
+                            </div>
+                        </td>
+                        <td style="padding: 10px;">$<%= price.toFixed(2) %></td>
+                        <td style="padding: 10px;">
+                            <form action="/cart/update" method="POST" style="display: flex; align-items: center;">
+                                <input type="hidden" name="productId" value="<%= product._id %>">
+                                <input type="number" name="quantity" value="<%= item.quantity %>" min="1" style="width: 60px; padding: 5px; margin-right: 5px;">
+                                <button type="submit" style="background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                                    Update
+                                </button>
+                            </form>
+                        </td>
+                        <td style="padding: 10px;">$<%= lineTotal.toFixed(2) %></td>
+                        <td style="padding: 10px;">
+                            <form action="/cart/remove" method="POST">
+                                <input type="hidden" name="productId" value="<%= product._id %>">
+                                <button type="submit" style="background: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                                    Remove
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        
+        <div style="float: right; width: 300px; background: #f5f5f5; padding: 20px; border-radius: 4px;">
+            <h3 style="margin-top: 0;">Order Summary</h3>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <span>Subtotal:</span>
+                <span>$<%= subtotal.toFixed(2) %></span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <span>Tax (10%):</span>
+                <span>$<%= (subtotal * 0.10).toFixed(2) %></span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 18px; margin-bottom: 20px;">
+                <span>Grand Total:</span>
+                <span>$<%= (subtotal * 1.10).toFixed(2) %></span>
+            </div>
+            
+            <form action="/cart/place-order" method="POST">
+                <button type="submit" style="width: 100%; background: #4CAF50; color: white; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-size: 16px;">
+                    Place Order
+                </button>
+            </form>
+        </div>
+        
+        <div style="clear: both;"></div>
+    <% } %>
+</div>

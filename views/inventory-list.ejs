@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+
+<div class="container mx-auto px-4 py-8">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold">Products List</h1>
+        <div>
+            <a href="/inventory/add" class="btn btn-primary mr-2">Add Product</a>
+            <a href="/load-data/products" class="btn btn-secondary">Load Sample Data</a>
+        </div>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="table w-full">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Featured</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(product => { %>
+                <tr>
+                    <td><%= product.title %></td>
+                    <td><%= product.category %></td>
+                    <td>$<%= product.price.toFixed(2) %></td>
+                    <td><%= product.featured ? 'Yes' : 'No' %></td>
+                    <td>
+                        <a href="/inventory/edit/<%= product._id %>" class="btn btn-sm btn-info mr-2">Edit</a>
+                        <a href="/inventory/remove/<%= product._id %>" class="btn btn-sm btn-error">Delete</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
